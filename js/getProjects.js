@@ -86,7 +86,7 @@ async function submitRequest(){
             switch(officeID) {
                 case "ANDOVER":
                   // code block
-                  window.location.href="./inductions/ANDOVER_Induction.html"
+                  window.location.href="/inductions/ANDOVER_Induction.html"
                   break;
                 case "NOTS":
                   // code block
