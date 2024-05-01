@@ -1,0 +1,113 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/getProjects.js"></script>
+    <script src="../js/variables.js"></script>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <link rel="icon" href="./assets/media/Keltbray-logo_single.png" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <title>Digital Delivery Hub - Office Sign In/Out</title>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-section">
+            <img alt="" id="headerlogo" class="logo_H" src="./assets/media/Keltbray-logo_single.png">
+            <h2 class="branding">Keltbray <br>DD Hub</h2>
+        </div>
+        <div class="header-section" id="main_header">
+            <h1>Keltbray Office Sign In/Out</h1>
+        </div>
+        <div class="header-section">
+            <h3></h3>
+        </div>
+    </header>
+
+    <main>
+        <div>
+            <form autocomplete="on" id="inputForm" onreset="populateFromStorage()">
+                <div class="form-group">
+                    <ul class="form-container">
+                        <li class="form-line" data-type="control_fullname" id="id_1">
+                            <div id="cid_6" class="form-input-wide" data-layout="full">
+                            <div class="form-details" data-wrapper-react="true">
+                                <span class="form-input-half" data-input-type="first">
+                                    <label class="form-label-half" for="firstName" id="sublabel_firstName" aria-hidden="false">First Name</label>
+                                    <input type="text" id="firstName" name="first name" class="form-textbox " data-defaultvalue="" autocomplete="section-input_6 given-name" size="10" value="" data-component="first" aria-labelledby="label_6 sublabel_6_first">
+                                </span>
+                                <span class="form-input-half" data-input-type="last">
+                                    <label class="form-label-half" for="lastName" id="sublabel_lastName" aria-hidden="false">Last Name</label>
+                                    <input type="text" id="lastName" name="last name" class="form-textbox" data-defaultvalue="" autocomplete="section-input_6 family-name" size="15" value="" data-component="last" aria-labelledby="label_6 sublabel_6_last">
+                                </span>
+                            </div>
+                            </div>
+                        </li>
+                        <li class="form-line" data-type="control_fullname" id="id_2">
+                            <div id="cid_6" class="form-input-wide" data-layout="full">
+                            <div class="form-details" data-wrapper-react="true">
+                                <span class="form-input-half" data-input-type="first">
+                                    <label class="form-label-half" for="Email" id="sublabel_Email" aria-hidden="false">Email</label>
+                                    <input type="email" id="Email" name="Email" class="form-textbox " data-defaultvalue="" autocomplete="email" size="10" value="" data-component="first" aria-labelledby="label_6 sublabel_6_first">
+                                </span>
+                                <span class="form-input-half" data-input-type="last">
+                                    <label class="form-label-half" for="Phone" id="sublabel_Phone" aria-hidden="false">Phone Number</label>
+                                    <input type="text" id="Phone" name="Phone" class="form-textbox" data-defaultvalue="" autocomplete="tel" size="15" value="" data-component="last" aria-labelledby="label_6 sublabel_6_last">
+                                </span>
+                            </div>
+                            </div>
+                        </li>
+                        <li class="form-line" data-type="control_fullname" id="id_3">
+                            <div id="cid_6" class="form-input-wide" data-layout="full">
+                            <div class="form-details" data-wrapper-react="true">
+                                <span class="form-input-half" data-input-type="first">
+                                    <label class="form-label-half" for="VehicleReg" id="sublabel_VehicleReg" aria-hidden="false">Vehicle Reg (if applicable)</label>
+                                    <input type="text" id="VehicleReg" name="VehicleReg" class="form-textbox " data-defaultvalue="" autocomplete="off" size="10" value="" data-component="first" aria-labelledby="label_6 sublabel_6_first">
+                                </span>
+                                <span class="form-input-half" data-input-type="first">
+                                    <label class="form-label-half" for="VehicleReg" id="sublabel_DistanceTravelled" aria-hidden="false">Distance Travelled in Miles (if applicable)</label>
+                                    <input type="text" id="DistanceTravelled" name="DistanceTravelled" class="form-textbox " data-defaultvalue="" autocomplete="off" size="10" value="" data-component="first" aria-labelledby="label_6 sublabel_6_first">
+    
+                                </span>
+                            </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+            <div id="cid_2" class="form-input-wide" data-layout="full">
+                <div data-align="auto" class="form-buttons-wrapper form-buttons-auto   jsTest-button-wrapperField">
+                  <button type="button" id="submit_btn" onclick="submitRequest()" class="submitButton" >Submit</button>
+                </div>
+              </div>
+        </div>
+    </main>
+    <script>
+        window.onload = function() {
+            var deviceId = localStorage.getItem("deviceId");
+
+
+            // If device is not remembered, prompt user to remember it
+            if (!deviceId) {
+                var remember = confirm("Do you want to remember this device?");
+                if (remember) {
+                    deviceId = generateDeviceId();
+                    localStorage.setItem("deviceId", deviceId);
+                }
+            }
+
+            // You can use the deviceId here for any purpose, for example, sending it to the server for authentication.
+            console.log("Device ID:", deviceId);
+        };
+
+        // Function to generate a unique device ID (you may replace this with your own method)
+        function generateDeviceId() {
+            return "device_" + Math.random().toString(36).substr(2, 10);
+        }
+    </script>
+</body>
+</html>
