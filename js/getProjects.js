@@ -64,8 +64,7 @@ async function submitRequest(){
    if (localEmail != localStorage.getItem("localEmail")|| 
    localFirstName != localStorage.getItem("localFirstName")|| 
    localLastName != localStorage.getItem("localLastName")|| 
-   localPhone != localStorage.getItem("localPhone")|| 
-   localVehicleReg != localStorage.getItem("localVehicleReg")) {
+   localPhone != localStorage.getItem("localPhone")) {
         var remember = confirm("Do you want to update your details?");
         if (remember) {
             localStorage.setItem("localFirstName", localFirstName);
@@ -76,18 +75,18 @@ async function submitRequest(){
         }
     }
     localStorage.setItem("localVehicleReg", localVehicleReg);
-    
+    sessionStorage.setItem("SPID",result.SharePointID)
     
     if(result.signType == "Signed In"){
         //document.getElementById("inputForm").reset();
-        SPID = result.SharePointID
-        sessionStorage.setItem("SPID",SPID)
+
+        
         if(result.inductionComplete == false){
             alert("You have successfully "+result.signType+" at "+result.time+", however you have not completed the office induction, please complete the following induction "+officeName)
             switch(officeID) {
                 case "ANDOVER":
                   // code block
-                  window.location.href="../inductions/ANDOVER_Induction.html"
+                  window.location.href="./inductions/ANDOVER_Induction.html"
                   break;
                 case "NOTS":
                   // code block
