@@ -57,7 +57,7 @@ async function submitRequest(){
             localStorage.setItem("localLastName", localLastName);
             localStorage.setItem("localEmail", localEmail);
             localStorage.setItem("localPhone", localPhone);
-            localStorage.setItem("localVehicleReg", localVehicleReg);
+            //localStorage.setItem("localVehicleReg", localVehicleReg);
         }
     }
    // If device is not remembered, prompt user to remember it
