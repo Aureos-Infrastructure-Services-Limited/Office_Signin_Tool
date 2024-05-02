@@ -34,6 +34,7 @@ async function populateFromStorage(){
 }
 
 async function submitRequest(){
+    DisableButton('submit_btn')
     localEmail = localStorage.getItem("localEmail");
     localPhone = localStorage.getItem("localPhone");
     localFirstName = localStorage.getItem("localFirstName");
@@ -101,6 +102,7 @@ async function submitRequest(){
     }else{
         alert("You have successfully "+result.signType+" at "+result.time)
     }
+    EnableButton('submit_btn')
 }
 
 async function populateProjectDropdown(){
@@ -256,4 +258,12 @@ async function getProjectFromURL(){
         .catch(error => console.error('Error fetching data:', error));
         
     return data
+    }
+
+function DisableButton(btnId) {
+    document.getElementById(btnId).disabled = true;
+    }
+
+function EnableButton(btnId) {
+    document.getElementById(btnId).disabled = false;
     }

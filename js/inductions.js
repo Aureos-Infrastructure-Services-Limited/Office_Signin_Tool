@@ -1,10 +1,11 @@
 
 async function completedInduction(){
   console.log(SPID)
+  DisableButton('inductionSubmitButton')
   response = await submitInduction()
   if(response.status == "updated"){
       alert("It has been recorded that you have completed the "+officeName+" induction")
-      window.location.href="/index.html?id="+officeID
+      window.location.href="/index.html?id="+sessionStorage.getItem("officeID")
   }
   }
 

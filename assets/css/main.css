@@ -256,8 +256,12 @@ input[type="submit"]:active {
 
 .submitButton:active {
   background-color: #3e8e41; /* Slightly darker green */
+  cursor: pointer;
 }
-
+.submitButton:disabled {
+  background-color: #a8b3a8; 
+  cursor:default;
+}
 
  
 
