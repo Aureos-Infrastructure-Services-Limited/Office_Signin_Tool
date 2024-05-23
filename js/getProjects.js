@@ -91,6 +91,7 @@ async function submitRequest(){
                   break;
                 case "NOTS":
                   // code block
+                  window.location.href="NOTS_Induction.html"
                   break;
                 default:
                   // code block
