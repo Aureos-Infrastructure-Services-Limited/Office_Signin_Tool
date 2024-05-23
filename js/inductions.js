@@ -4,11 +4,13 @@ async function completedInduction(){
   DisableButton('inductionSubmitButton')
   response = await submitInduction()
   if(response.status == "updated"){
-      alert("It has been recorded that you have completed the "+officeName+" induction")
+      alert("It has been recorded that you have completed the "+sessionStorage.getItem("officeName")+" induction")
       window.location.href="/index.html?id="+sessionStorage.getItem("officeID")
   }
   }
-
+  function DisableButton(btnId) {
+    document.getElementById(btnId).disabled = true;
+    }
 async function submitInduction(){
 
   const bodyData = {
