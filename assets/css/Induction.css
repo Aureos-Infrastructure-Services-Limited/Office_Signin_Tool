@@ -79,6 +79,27 @@ p{
 
   }
   .iframeContainer{
-    height: 100%;
+    
     margin-top: 90px;
+    margin-bottom: 100px;
   }
+  #pdf-viewer {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.pdf-page {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    display: block;
+}
+.divider {
+  width: 100%;
+  height: 2px;
+  background-color: #ccc;
+  margin: 20px 0;
+}
+.bottomFill{
+  margin-bottom: 50px;
+}

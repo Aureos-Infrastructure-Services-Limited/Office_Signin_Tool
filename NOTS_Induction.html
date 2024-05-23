@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="assets/css/Induction.css">
     <script src="js/inductions.js"></script>
     <script src="js/variables.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
     <link rel="icon" href="assets/media/Keltbray-logo_single.png" type="image/x-icon">
     <title>Nottingham Office Induction</title>
 </head>
@@ -16,13 +16,62 @@
         <p>Please familiarise yourself with the information below before completing the induction</p>
     </div>
     <div class="iframeContainer">
-
-        <iframe src="../assets/media/Nottingham_Office_Induction.pdf" class="pdfViewer" type="application/pdf">
-            This browser does not support PDFs. Please download the PDF to view it: <a href="../assets/media/Nottingham_Office_Induction.pdf">Download PDF</a>.
-        </iframe>
-    <button class="submitInductionButton" id="inductionSubmitButton" onclick="completedInduction()">Click here to complete induction</button>
+        <div id="pdf-viewer"></div>
+        <button class="submit InductionButton" id="inductionSubmitButton" onclick="completedInduction()">Click here to complete induction</button>
     </div>
 
+    <div class="bottomFill"></div>
+    <script>
+        var url = 'https://keltbray-dd.github.io/Office_Signin_Tool/assets/media/Nottingham_Office_Induction.pdf';
+
+        var pdfjsLib = window['pdfjs-dist/build/pdf'];
+
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
+
+        pdfjsLib.getDocument(url).promise.then(function(pdf) {
+            console.log('PDF loaded');
+            var viewer = document.getElementById('pdf-viewer');
+
+            // Loop through each page
+            for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
+                pdf.getPage(pageNumber).then(function(page) {
+                    console.log('Page ' + pageNumber + ' loaded');
+
+                    var scale = 1.5;
+                    var viewport = page.getViewport({ scale: scale });
+
+                    // Create a canvas element for each page
+                    var canvas = document.createElement('canvas');
+                    canvas.className = 'pdf-page';
+                    var context = canvas.getContext('2d');
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+
+                    // Append the canvas to the viewer
+                    viewer.appendChild(canvas);
+
+                    // Render PDF page into canvas context
+                    var renderContext = {
+                        canvasContext: context,
+                        viewport: viewport
+                    };
+                    var renderTask = page.render(renderContext);
+                    renderTask.promise.then(function() {
+                        console.log('Page ' + pageNumber + ' rendered');
+                    });
+
+                    // Add a divider after each page except the last one
+                    if (pageNumber < pdf.numPages) {
+                        var divider = document.createElement('div');
+                        divider.className = 'divider';
+                        viewer.appendChild(divider);
+                    }
+                });
+            }
+        }, function(reason) {
+            console.error(reason);
+        });
+    </script>
 </body>
 
 </html>
