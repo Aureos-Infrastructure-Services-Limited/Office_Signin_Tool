@@ -15,7 +15,7 @@ async function submitInduction(){
 
   const bodyData = {
       'SPID': sessionStorage.getItem("SPID"),
-      'Office':sessionStorage.getItem("officeID")
+      'OfficeID':sessionStorage.getItem("officeID")
       };
   
   const headers = {
