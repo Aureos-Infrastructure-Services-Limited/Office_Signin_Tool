@@ -206,6 +206,7 @@ function checkURL(){
         } else {
             console.log('The URL does not contain an Project ID parameter');
             alert("No project code detected please check link provided has a Project code in the URL")
+            showPopup()
         }
     }
 
@@ -230,6 +231,7 @@ async function getProjectFromURL(){
             header.innerHTML = `<h1>Keltbray Site Sign In/Out <br>${officeName} </h1>`
         } else {
             console.log('No ID parameter found in the URL');
+
         }
     }
 
@@ -268,3 +270,42 @@ function DisableButton(btnId) {
 function EnableButton(btnId) {
     document.getElementById(btnId).disabled = false;
     }
+
+// Function to show popup
+async function showPopup() {
+    const popup = document.getElementById('popup');
+    const officeList = document.getElementById('officeList');
+    
+    // Example list of offices
+    const offices = await getOfficeList();
+
+    // Generate list items
+    offices.forEach((office, index) => {
+        const div = document.createElement('div');
+        div.className = 'list-item';
+        div.textContent = office.Office_Name;
+        div.onclick = function() {
+            setOfficeID(office.Office_Code,office.Office_Name);
+        };
+        officeList.appendChild(div);
+    });
+
+    popup.style.display = 'block';
+}
+
+// Function to close popup
+function closePopup() {
+    const popup = document.getElementById('popup');
+    popup.style.display = 'none';
+}
+
+function setOfficeID(officeID,officeName) {
+    // Your logic to set the OfficeID variable
+    var header = document.getElementById('main_header')
+    console.log('Selected OfficeID:', officeID);
+    console.log('Office Name:', officeName);
+    sessionStorage.setItem("officeID",officeID)
+    sessionStorage.setItem("officeName",officeName)
+    header.innerHTML = `<h1>Keltbray Site Sign In/Out <br>${officeName} </h1>`
+    closePopup();
+}
