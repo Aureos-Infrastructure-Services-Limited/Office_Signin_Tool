@@ -474,6 +474,7 @@ input[type="submit"]:active {
           background-color: rgb(0,0,0); /* Fallback color */
           background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
           padding-top: 60px;
+          
       }
 
       /* Popup Content */
@@ -483,8 +484,13 @@ input[type="submit"]:active {
           padding: 20px;
           border: 1px solid #888;
           width: 80%; /* Could be more or less, depending on screen size */
+          border-radius: 10px;
       }
 
+      .popup-content h2{
+        margin: 0;
+        margin-bottom: 10px;
+      }
       /* Close button */
       .close {
           color: #aaa;
