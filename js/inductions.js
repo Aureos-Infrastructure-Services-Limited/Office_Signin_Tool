@@ -5,7 +5,8 @@ async function completedInduction(){
   response = await submitInduction()
   if(response.status == "updated"){
       alert("It has been recorded that you have completed the "+sessionStorage.getItem("officeName")+" induction")
-      window.location.href="/?id="+sessionStorage.getItem("officeID")
+      //window.location.href="/?id="+sessionStorage.getItem("officeID")
+      window.history.back()
   }
   }
   function DisableButton(btnId) {
