@@ -215,7 +215,7 @@ async function getProjectFromURL(){
         var header = document.getElementById('main_header')
 
         // Check if the URL contains a parameter named 'id'
-        if (url.indexOf('id=') !== -1) {
+        if (url.indexOf('id=') !== -1 || sessionStorage.getItem('officeID') != null) {
             // Extract the value of the 'id' parameter
             var id = url.split('id=')[1];
             await getOfficeList()
