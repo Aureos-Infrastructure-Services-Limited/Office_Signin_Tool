@@ -177,7 +177,7 @@ async function submitSign(){
             body: JSON.stringify(bodyData)
         };
         
-        const apiUrl = "https://prod-00.uksouth.logic.azure.com:443/workflows/44e9cfd86bf24a1faa0c19ea9774c27d/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=bXtJjH455fplsxnk2Zzx17V2Ga-ucNVsNzh9Aje7GJE";
+        const apiUrl = "https://prod-14.uksouth.logic.azure.com:443/workflows/04a0b5e53b11460aa9a91ccfd2c44c6a/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=sqVKUXFy7WAJoyXedwvF4jz9YfQH1dE8DOP8KnB2_xo";
         console.log(apiUrl)
         console.log(requestOptions)
         data = await fetch(apiUrl,requestOptions)
@@ -246,7 +246,7 @@ async function getProjectFromURL(){
         headers: headers,
         };
     
-    const apiUrl = "https://prod-17.uksouth.logic.azure.com:443/workflows/c86e1979520140e6924bafd54c949bf1/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=6vZYzW95J7L3UvWdyR9kgJdbpvtTJy9RTM7nb2ULvOU";
+    const apiUrl = "https://prod-00.uksouth.logic.azure.com:443/workflows/2844aa86f91c432883ee87b37e0f7e9f/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=V0U3UypX_vCXI02x7INs7Kla9y5gnqL-DUE3hAqbjLk";
     //console.log(apiUrl)
     //console.log(requestOptions)
     data = await fetch(apiUrl,requestOptions)
