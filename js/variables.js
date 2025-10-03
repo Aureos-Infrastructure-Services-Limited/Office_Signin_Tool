@@ -14,4 +14,4 @@ let officeName;
 let SPID;
 
 const appName = "Aureos Sign In/Out Form";
-const appVersion = "v1.0.0";
+const appVersion = "v1.0.1";

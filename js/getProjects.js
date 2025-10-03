@@ -168,7 +168,7 @@ function checkURL(){
 async function getProjectFromURL(){
         // Get the URL of the current page
         var url = window.location.href;
-        var header = document.getElementById('main_header')
+        var header = document.getElementById('locationName')
 
         // Check if the URL contains a parameter named 'id'
         if (url.indexOf('id=') !== -1 || sessionStorage.getItem('officeID') != null) {
@@ -179,11 +179,12 @@ async function getProjectFromURL(){
             officeName = office[0].Office_Name
             // Display the extracted ID
             officeID = id
-            console.log('Extracted ID:', id);
+            
+            console.log('Selected OfficeID:', officeID);
             console.log('Office Name:', officeName);
-            sessionStorage.setItem("officeID",id)
+            sessionStorage.setItem("officeID",officeID)
             sessionStorage.setItem("officeName",officeName)
-            header.innerHTML = `<h1>Keltbray Site Sign In/Out <br>${officeName} </h1>`
+            header.innerHTML = `<h2>${officeName} </h2>`
         } else {
             console.log('No ID parameter found in the URL');
 
