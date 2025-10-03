@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-    <link rel="icon" href="./assets/media/Keltbray-logo_single.png" type="image/x-icon">
+    <link rel="icon" href="https://www.aureos.com/wp-content/uploads/2025/02/AUREOS-FAVicon_512px-x-512px-150x150.png"
+        sizes="32x32">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <title>Digital Delivery Hub - Office Sign In/Out</title>
@@ -15,9 +16,9 @@
 
 <body>
 
-    <header>
+    <!-- <header>
         <div class="header-section">
-            <img alt="" id="headerlogo" class="logo_H" src="./assets/media/Keltbray-logo_single.png">
+            <img alt="" id="headerlogo" class="logo_H" src="assets/media/Keltbray-logo_single.png">
             <h2 class="branding">Keltbray <br>DD Hub</h2>
         </div>
         <div class="header-section" id="main_header">
@@ -26,13 +27,39 @@
         <div class="header-section">
             <h3></h3>
         </div>
-    </header>
+    </header> -->
+    <div class="top-bar">
+        <div class="menuLogoContainer">
+            <div class="menu-container">
+                <!-- Burger Icon -->
+                <div class="burger-icon">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <!-- Side Menu -->
+                <div class="side-menu" id="side-menu">
 
-    <main>
+                </div>
+            </div>
+            <img src="https://www.aureos.com/wp-content/themes/keltbray/assets/img/logo/AUREOS_logo_wh.svg"
+                class="logo logo--white" alt="Aureos Logo">
+        </div>
+        <div class="title" id="main_header">
+            <h2>Sign In/Out Register</h2>
+        </div>
+        <div class="profile-container" id="profileMenu">
+
+        </div>
+    </div>
+    <main class="wrap form-container">
         <div>
+            <div class="header" id="locationName">
+
+            </div>
             <form autocomplete="on" id="inputForm" onreset="populateFromStorage()">
                 <div class="form-group">
-                    <ul class="form-container">
+                    <ul class="">
                         <li class="form-line" data-type="control_fullname" id="id_1">
                             <div id="cid_6" class="form-input-wide" data-layout="full">
                             <div class="form-details" data-wrapper-react="true">
@@ -61,6 +88,34 @@
                             </div>
                             </div>
                         </li>
+                        <li class="form-line" data-type="control_fullname" id="id_1">
+                            <div id="cid_6" class="form-input-wide" data-layout="full">
+                            <div class="form-details" data-wrapper-react="true">
+                                <span class="form-input-half" data-input-type="first">
+                                    <label class="form-label-half" for="firstName" id="sublabel_company" aria-hidden="false">Company</label>
+                                    <input type="text" id="company" name="company" class="form-textbox " data-defaultvalue=""  size="10" value="" data-component="first" aria-labelledby="label_6 sublabel_6_first">
+                                </span>
+                                <span class="form-input-half" data-input-type="last">
+                                    <label class="form-label-half" for="lastName" id="sublabel_toSee" aria-hidden="false">To See</label>
+                                    <input type="text" id="toSee" name="toSee" class="form-textbox" data-defaultvalue="" size="15" value="" data-component="last" aria-labelledby="label_6 sublabel_6_last">
+                                </span>
+                            </div>
+                            </div>
+                        </li>
+                        <!-- <li class="form-line" data-type="control_fullname" id="id_4">
+                            <div class="form-input-wide" data-layout="full">
+                                <span class="form-input-half" data-input-type="first" id="staffOrVisitor_option">
+                                    Are you staff or a visitor
+                                    <input type="checkbox" name="" id="staffOrVisitor_option_input_staff" value="staff">
+                                    <label for="staffOrVisitor_option_input_staff">Staff</label>
+                                    <input type="checkbox" name="" id="staffOrVisitor_option_input_visitor" value="visitor">
+                                    <label for="staffOrVisitor_option_input_visitor">Visitor</label>
+                                </span>
+                                <span class="form-input-half" data-input-type="first" id="businessUnit_option">
+
+                                </span>
+                            </div>
+                        </li> -->
                         <li class="form-line" data-type="control_fullname" id="id_3">
                             <div id="cid_6" class="form-input-wide" data-layout="full">
                             <div class="form-details" data-wrapper-react="true">
@@ -118,5 +173,6 @@
             return "device_" + Math.random().toString(36).substr(2, 10);
         }
     </script>
+    <div id="appInfo"></div>
 </body>
 </html>

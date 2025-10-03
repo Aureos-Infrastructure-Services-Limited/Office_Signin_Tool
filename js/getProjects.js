@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById("appInfo").textContent = `${appName} ${appVersion}`;
     checkURL()
     populateFromStorage()
     
@@ -106,54 +107,6 @@ async function submitRequest(){
     EnableButton('submit_btn')
 }
 
-async function populateProjectDropdown(){
-    let projectList
-    projectList = await getProjectList()
-
-    const projectDropdown = document.getElementById('project_input');
-    projectDropdown.innerHTML = '<option value=""></option>'
-    projectList.forEach(project => {
-      const option = document.createElement('option');
-      option.text = project.code+" - "+project.name;
-      option.value = project.code;
-      projectDropdown.add(option);
-    });
-    }
-
-async function getProjectList(scopeInput){
-
-    const bodyData = {
-        scope: scopeInput,
-        };
-    
-    const headers = {
-        'Content-Type':'application/json'
-    };
-    
-    const requestOptions = {
-        method: 'GET',
-        headers: headers,
-        //body: JSON.stringify(bodyData)
-    };
-    
-    const apiUrl = "https://prod-04.uksouth.logic.azure.com:443/workflows/0486d5b3e7f04ea6aede5d4f23859693/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XaJVCfc5P4za3t2zmNDxGl3xlMdn-i90QaQnd4f9VW4";
-    //console.log(apiUrl)
-    //console.log(requestOptions)
-    data = await fetch(apiUrl,requestOptions)
-        .then(response => response.json())
-        .then(data => {
-            const JSONdata = data
-    
-        //console.log(JSONdata)
-    
-        return JSONdata
-        })
-        .catch(error => console.error('Error fetching data:', error));
-        
-    return data
-    }
-
-
    
 async function submitSign(){
 
@@ -164,7 +117,9 @@ async function submitSign(){
             "email": $("#Email").val(),
             "phone": $("#Phone").val(),
             "vehicleReg": $("#VehicleReg").val(),
-            "distanceTravelled": $("#DistanceTravelled").val()
+            "distanceTravelled": $("#DistanceTravelled").val(),
+            "company": $("#company").val(),
+            "toSee": $("#toSee").val()
             };
         
         const headers = {
@@ -177,7 +132,7 @@ async function submitSign(){
             body: JSON.stringify(bodyData)
         };
         
-        const apiUrl = "https://prod-14.uksouth.logic.azure.com:443/workflows/04a0b5e53b11460aa9a91ccfd2c44c6a/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=sqVKUXFy7WAJoyXedwvF4jz9YfQH1dE8DOP8KnB2_xo";
+        const apiUrl = "https://default917b4d06d2e9475983a3e7369ed74e.8f.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/04a0b5e53b11460aa9a91ccfd2c44c6a/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=QaBs46MJr07vEtjsK0jQrR_veArdK4_AcclqdWhrt-c";
         console.log(apiUrl)
         console.log(requestOptions)
         data = await fetch(apiUrl,requestOptions)
@@ -246,7 +201,7 @@ async function getProjectFromURL(){
         headers: headers,
         };
     
-    const apiUrl = "https://prod-00.uksouth.logic.azure.com:443/workflows/2844aa86f91c432883ee87b37e0f7e9f/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=V0U3UypX_vCXI02x7INs7Kla9y5gnqL-DUE3hAqbjLk";
+    const apiUrl = "https://default917b4d06d2e9475983a3e7369ed74e.8f.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/2844aa86f91c432883ee87b37e0f7e9f/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ppQyVSq_tnqaDE8M9p2xX7x0fXCetALG9dezO8XVBlU";
     //console.log(apiUrl)
     //console.log(requestOptions)
     data = await fetch(apiUrl,requestOptions)
@@ -301,11 +256,11 @@ function closePopup() {
 
 function setOfficeID(officeID,officeName) {
     // Your logic to set the OfficeID variable
-    var header = document.getElementById('main_header')
+    var header = document.getElementById('locationName')
     console.log('Selected OfficeID:', officeID);
     console.log('Office Name:', officeName);
     sessionStorage.setItem("officeID",officeID)
     sessionStorage.setItem("officeName",officeName)
-    header.innerHTML = `<h1>Keltbray Site Sign In/Out <br>${officeName} </h1>`
+    header.innerHTML = `<h2>${officeName} </h2>`
     closePopup();
 }
