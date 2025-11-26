@@ -81,28 +81,29 @@ async function submitRequest(){
     
     if(result.signType == "Signed In"){
         //document.getElementById("inputForm").reset();
+        alert("You have successfully "+result.signType+" at "+result.time)
 
         
-        if(result.inductionComplete == false){
-            alert("You have successfully "+result.signType+" at "+result.time+", however you have not completed the office induction, please complete the following induction "+officeName)
-            switch(officeID) {
-                case "ANDOVER":
-                  // code block
-                  window.location.href="ANDOVER_Induction.html"
-                  break;
-                case "NOTS":
-                  // code block
-                  window.location.href="NOTS_Induction.html"
-                  break;
-                default:
-                  // code block
-              }
-        }else{
-            alert("You have successfully "+result.signType+" at "+result.time+" and you have already completed the office induction for "+officeName)
-        }
+        // if(result.inductionComplete == false){
+        //     alert("You have successfully "+result.signType+" at "+result.time+", however you have not completed the office induction, please complete the following induction "+officeName)
+        //     switch(officeID) {
+        //         case "ANDOVER":
+        //           // code block
+        //           window.location.href="ANDOVER_Induction.html"
+        //           break;
+        //         case "NOTS":
+        //           // code block
+        //           window.location.href="NOTS_Induction.html"
+        //           break;
+        //         default:
+        //           // code block
+        //       }
+        // }else{
+        //     alert("You have successfully "+result.signType+" at "+result.time+" and you have already completed the office induction for "+officeName)
+        // }
         
     }else{
-        alert("You have successfully "+result.signType+" at "+result.time)
+        
     }
     EnableButton('submit_btn')
 }
